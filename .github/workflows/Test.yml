@@ -6,7 +6,7 @@ env:
   USER: github.actor
 jobs:
   install_ROS2_iron:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check out the current repository to the runner
         uses: actions/checkout@v4
