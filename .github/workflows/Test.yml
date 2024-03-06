@@ -26,16 +26,13 @@ jobs:
       - name: Success Message
         run: echo "$GITHUB_ACTOR successfully installed ROS2-iron in system"
 
-      # - name: Source ROS2 Iron (underlay)
-      #   run: source ~/opt/ros/iron/setup.bash
-
       - name: Check colcon and rosdep version
         run: which colcon && which rosdep
       
       - name: Initialise and update rosdep
-        run: sudo rosdep init && rosdep install -i --from-path src --rosdistro iron -y
+        run: sudo rosdep init && rosdep update
 
-      - name: Update all ROS dependencies using rosdep
+      - name: Install all ROS dependencies using rosdep
         run: rosdep install -i --from-path src --rosdistro iron -y
       
       - name: Build sources
