@@ -26,6 +26,9 @@ jobs:
       - name: Success Message
         run: echo "$GITHUB_ACTOR successfully installed ROS2-iron in system"
 
+      - name: Install colcon
+        run: sudo apt-get update && sudo apt-get install python3-colcon-common-extensions
+
       - name: Check colcon and rosdep version
         run: which colcon && which rosdep
       
@@ -36,10 +39,10 @@ jobs:
         run: rosdep install -i --from-path src --rosdistro iron -y
       
       - name: Build sources
-        run: colcon build
-
-      - name: Source ROS2 overlay
-        run: source install/setup.bash
+        run: |
+          cd $GITHUB_WORKSPACE
+          source /opt/ros/iron/setup.bash
+          colcon build
 
   # build:
   #   runs-on: ubuntu-latest
