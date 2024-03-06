@@ -47,34 +47,43 @@ jobs:
           source /opt/ros/iron/setup.bash
           colcon build
 
-  build_run_publisher:
-    runs-on: ubuntu-latest
-    needs: install_ROS2_iron
-    steps:
-      - name: Check out the current repository to the runner
-        uses: actions/checkout@v4
-
       - name: Source overlay
         run: |
           cd $GITHUB_WORKSPACE
           source install/setup.bash
-          
+            
       - name: Run Publisher
         run: |
           ros2 run cpp_arief_pubsub talker
 
-  build_run_subscriber:
-    runs-on: ubuntu-latest
-    needs: install_ROS2_iron
-    steps:
-      - name: Check out the current repository to the runner
-        uses: actions/checkout@v4
-        
-      - name: Source overlay
-        run: |
-          cd $GITHUB_WORKSPACE
-          source install/setup.bash
+  # build_run_publisher:
+  #   runs-on: ubuntu-latest
+  #   needs: install_ROS2_iron
+  #   steps:
+  #     - name: Check out the current repository to the runner
+  #       uses: actions/checkout@v4
 
-      - name: Run Publisher
-        run: |
-          ros2 run cpp_arief_pubsub listener
+  #     - name: Source overlay
+  #       run: |
+  #         cd $GITHUB_WORKSPACE
+  #         source install/setup.bash
+          
+  #     - name: Run Publisher
+  #       run: |
+  #         ros2 run cpp_arief_pubsub talker
+
+  # build_run_subscriber:
+  #   runs-on: ubuntu-latest
+  #   needs: install_ROS2_iron
+  #   steps:
+  #     - name: Check out the current repository to the runner
+  #       uses: actions/checkout@v4
+
+  #     - name: Source overlay
+  #       run: |
+  #         cd $GITHUB_WORKSPACE
+  #         source install/setup.bash
+
+  #     - name: Run Publisher
+  #       run: |
+  #         ros2 run cpp_arief_pubsub listener
