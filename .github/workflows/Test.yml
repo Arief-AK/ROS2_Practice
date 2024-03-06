@@ -31,9 +31,9 @@ jobs:
 
       - name: Check colcon and rosdep version
         run: which colcon && which rosdep
-
-      - name: Get to workspace directory
-        run: cd 
+      
+      - name: Initialise and update rosdep
+        run: sudo rosdep init && rosdep install -i --from-path src --rosdistro iron -y
 
       - name: Update all ROS dependencies using rosdep
         run: rosdep install -i --from-path src --rosdistro iron -y
