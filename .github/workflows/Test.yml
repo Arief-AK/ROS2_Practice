@@ -43,25 +43,3 @@ jobs:
           cd $GITHUB_WORKSPACE
           source /opt/ros/iron/setup.bash
           colcon build
-
-  # build:
-  #   runs-on: ubuntu-latest
-  #   needs: install_ROS2_iron
-  #   steps:
-  #     - name: Source ROS2 Iron (underlay)
-  #       run: source ~/opt/ros/iron/setup.bash
-
-  #     - name: Check colcon and rosdep version
-  #       run: which colcon && which rosdep
-
-  #     - name: Get to workspace directory
-  #       run: cd 
-
-  #     - name: Update all ROS dependencies using rosdep
-  #       run: rosdep install -i --from-path src --rosdistro iron -y
-      
-  #     - name: Build sources
-  #       run: colcon build
-
-  #     - name: Source ROS2 overlay
-  #       run: source install/setup.bash
