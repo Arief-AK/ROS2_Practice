@@ -47,7 +47,15 @@ jobs:
           source /opt/ros/iron/setup.bash
           colcon build
 
+  run_publisher:
+    runs-on: ubuntu-latest
+    needs: install_ROS2_iron
+    steps:
+      - name: Check out the current repository to the runner
+        uses: actions/checkout@v4
+
       - name: Run Publisher
+        timeout-minutes: 0.5
         run: |
           cd $GITHUB_WORKSPACE
           source install/setup.bash && ros2 run cpp_arief_pubsub talker
