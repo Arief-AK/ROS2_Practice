@@ -6,6 +6,9 @@ on:
     branches:
       - main
       - formatting
+  pull_request:
+    branches:
+      - main
 env:
   USER: github.actor
 jobs:
@@ -13,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        packages: [cpp_arief_pubsub]
+        packages: [cpp_arief_pubsub, cpp_service_cli]
     steps:
       - name: Check out the current repository to the runner
         uses: actions/checkout@v4
