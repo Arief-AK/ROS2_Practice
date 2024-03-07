@@ -47,14 +47,10 @@ jobs:
           source /opt/ros/iron/setup.bash
           colcon build
 
-      - name: Source overlay
-        run: |
-          cd $GITHUB_WORKSPACE
-          source install/setup.bash
-            
       - name: Run Publisher
         run: |
-          ros2 run cpp_arief_pubsub talker
+          cd $GITHUB_WORKSPACE
+          source install/setup.bash && ros2 run cpp_arief_pubsub talker
 
   # build_run_publisher:
   #   runs-on: ubuntu-latest
