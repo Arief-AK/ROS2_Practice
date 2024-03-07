@@ -39,10 +39,10 @@ jobs:
           colcon build
 
       - name: Run Publisher
-        timeout-minutes: 0.5
         run: |
           cd $GITHUB_WORKSPACE
           source install/setup.bash && ros2 run cpp_arief_pubsub talker
+        timeout-minutes: 1
 
   build_subscriber:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
         run: chmod +x .github/workflows/install_ros.sh
 
       - name: Make the script files executable
-        run: chmod +x .github/workflows/install_ros_dependencies.sh
+        run: chmod +x .github/workflows/install_package_dependencies.sh
 
       - name: Running system install dependencies script
         run: .github/workflows/install_system_dependencies.sh "${{ env.USER }}"
@@ -66,7 +66,7 @@ jobs:
         run: .github/workflows/install_ros.sh "${{ env.USER }}"
 
       - name: Running install ROS2 extra dependencies script
-        run: .github/workflows/install_ros_dependencies.sh "${{ env.USER }}"
+        run: .github/workflows/install_package_dependencies.sh "${{ env.USER }}"
       
       - name: Build sources
         run: |
@@ -75,10 +75,10 @@ jobs:
           colcon build
 
       - name: Run Subscriber
-        timeout-minutes: 0.5
         run: |
           cd $GITHUB_WORKSPACE
           source install/setup.bash && ros2 run cpp_arief_pubsub listener
+        timeout-minutes: 1
 
   # build_run_publisher:
   #   runs-on: ubuntu-latest
