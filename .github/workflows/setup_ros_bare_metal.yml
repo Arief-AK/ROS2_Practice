@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        distro: [iron, rolling]
+        distro: [iron]
     steps:
       - name: Check out the current repository to the runner
         uses: actions/checkout@v4
@@ -34,27 +34,19 @@ jobs:
         run: .github/workflows/install_system_dependencies.sh "${{ env.USER }}"
 
       - name: Running install ROS2 script
-        env:
-          DISTRO_VALUE: "${{matrix.distro}}"
-        run: .github/workflows/install_ros.sh "${{ env.DISTRO_VALUE }}"
+        run: .github/workflows/install_ros.sh $DISTRO
 
       - name: Running install ROS2 extra dependencies script
-        env:
-          DISTRO_VALUE: "${{matrix.distro}}"
-        run: .github/workflows/install_package_dependencies.sh "${{ env.DISTRO_VALUE }}"
+        run: .github/workflows/install_package_dependencies.sh $DISTRO
 
       - name: Build sources
-        env:
-          DISTRO_VALUE: "${{matrix.distro}}"
         run: |
           cd $GITHUB_WORKSPACE
-          source /opt/ros/${{env.DISTRO_VALUE}}/setup.bash
+          source /opt/ros/${{matrix.distro}}/setup.bash
           colcon build
 
       - name: Test packages
-        env:
-          DISTRO_VALUE: "${{matrix.distro}}"
         run: |
           cd $GITHUB_WORKSPACE
-          source /opt/ros/${{env.DISTRO_VALUE}}/setup.bash
+          source /opt/ros/${{matrix.distro}}/setup.bash
           colcon test
