@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        distro: [iron]
+        distro: [iron, rolling, noetic]
         packages: [cpp_arief_pubsub, cpp_service_cli]
     steps:
       - name: Check out the current repository to the runner
@@ -43,7 +43,7 @@ jobs:
       - name: Build sources
         run: |
           cd $GITHUB_WORKSPACE
-          source /opt/ros/iron/setup.bash
+          source /opt/ros/${{matrix.distro}}/setup.bash
           colcon build
 
       - name: Test packages
