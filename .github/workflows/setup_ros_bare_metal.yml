@@ -4,8 +4,8 @@ name: setup_ROS2_on_bare_metal
 on:
   push:
     branches:
-      - main
-      # - formatting
+      # - main
+      - formatting
   # pull_request:
   #   branches:
   #     - main
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        distro: [iron]
+        distro: [iron, rolling]
     steps:
       - name: Check out the current repository to the runner
         uses: actions/checkout@v4
