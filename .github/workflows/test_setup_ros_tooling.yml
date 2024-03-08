@@ -1,0 +1,32 @@
+# Workflow to test using open-source ros-tooling
+
+name: setup_ROS2_with_ros_tooling
+on:
+  push:
+    branches:
+      - main
+env:
+  USER: github.actor
+jobs:
+  setup_ros:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: [iron]
+    steps:
+      - name: Check out the current repository to the runner
+        uses: actions/checkout@v4
+
+      - name: Setup ROS2
+        uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: ${{matrix.distro}}
+
+      - name: Build ROS2 packages from repo
+        uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: cpp_arief_pubsub
+          target-ros2-distro: iron
+
+
+    

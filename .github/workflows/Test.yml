@@ -5,10 +5,10 @@ on:
   push:
     branches:
       - main
-      - formatting
-  pull_request:
-    branches:
-      - main
+  #     - formatting
+  # pull_request:
+  #   branches:
+  #     - main
 env:
   USER: github.actor
 jobs:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Running install ROS2 extra dependencies script
         run: .github/workflows/install_package_dependencies.sh "${{ env.USER }}"
-      
+
       - name: Build sources
         run: |
           cd $GITHUB_WORKSPACE
