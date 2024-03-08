@@ -25,6 +25,7 @@ jobs:
       - name: Build ROS2 packages from repo
         uses: ros-tooling/action-ros-ci@v0.3
         with:
+          import-token: ${{ secrets.REPO_TOKEN }}
           package-name: cpp_arief_pubsub
           target-ros2-distro: iron
 
