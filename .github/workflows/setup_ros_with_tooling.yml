@@ -33,3 +33,34 @@ jobs:
           cd $GITHUB_WORKSPACE
           source /opt/ros/${{matrix.distro}}/setup.bash
           colcon test
+
+  setup_ros_docker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ros_distribution:
+          - iron
+        include:
+          - docker_image: ubuntu-jammy
+            ros_distribution: iron
+            ros_version: 2
+    
+    container:
+      image: ${{matrix.docker_image}}
+    steps:
+      - name: setup ROS environment
+        uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: ${{ matrix.ros_distribution }}
+      
+      - name: Build ROS2 packages from repo
+        run: |
+          cd $GITHUB_WORKSPACE
+          source /opt/ros/${{matrix.ros_distribution}}/setup.bash
+          colcon build
+
+      - name: Test ROS2 packages from repo
+        run: |
+          cd $GITHUB_WORKSPACE
+          source /opt/ros/${{matrix.ros_distribution}}/setup.bash
+          colcon test

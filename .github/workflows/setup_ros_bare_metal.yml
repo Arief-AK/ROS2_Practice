@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - formatting
+      # - formatting
   # pull_request:
   #   branches:
   #     - main
@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        distro: [iron]
         packages: [cpp_arief_pubsub, cpp_service_cli]
     steps:
       - name: Check out the current repository to the runner
@@ -34,10 +35,10 @@ jobs:
         run: .github/workflows/install_system_dependencies.sh "${{ env.USER }}"
 
       - name: Running install ROS2 script
-        run: .github/workflows/install_ros.sh "${{ env.USER }}"
+        run: .github/workflows/install_ros.sh "${{ matrix.distro }}"
 
       - name: Running install ROS2 extra dependencies script
-        run: .github/workflows/install_package_dependencies.sh "${{ env.USER }}"
+        run: .github/workflows/install_package_dependencies.sh "${{ matrix.distro }}"
 
       - name: Build sources
         run: |
