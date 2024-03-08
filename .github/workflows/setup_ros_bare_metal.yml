@@ -33,7 +33,7 @@ jobs:
         run: |
           .github/workflows/install_ros.sh "${{ env.USER }}" "${{matrix.distro}}"
           source /opt/ros/${{matrix.distro}}/setup.bash && ros2 run --help
-          echo "${{env.USER}} successfully installed ROS2-${{matrix.distro}} in system"
+          echo "${{github.actor}} successfully installed ROS2-${{matrix.distro}} in system"
 
       - name: Running install ROS2 extra dependencies script
         run: .github/workflows/install_package_dependencies.sh "${{ env.USER }}" "${{matrix.distro}}"
