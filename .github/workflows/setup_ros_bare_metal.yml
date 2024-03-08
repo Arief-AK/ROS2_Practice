@@ -4,8 +4,8 @@ name: setup_ROS2_on_bare_metal
 on:
   push:
     branches:
-      - main
-      # - formatting
+      # - main
+      - formatting
   # pull_request:
   #   branches:
   #     - main
