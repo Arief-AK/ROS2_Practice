@@ -48,6 +48,9 @@ jobs:
     container:
       image: ${{matrix.docker_image}}
     steps:
+      - name: Check out the current repository to the container
+        uses: actions/checkout@v4
+
       - name: setup ROS environment
         uses: ros-tooling/setup-ros@v0.7
         with:
