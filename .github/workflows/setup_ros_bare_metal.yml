@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         distro: [iron, rolling, noetic]
-        packages: [cpp_arief_pubsub, cpp_service_cli]
     steps:
       - name: Check out the current repository to the runner
         uses: actions/checkout@v4
