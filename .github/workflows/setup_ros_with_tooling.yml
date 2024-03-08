@@ -4,8 +4,8 @@ name: setup_ROS2_with_ros_tooling
 on:
   push:
     branches:
-      - main
-      # - formatting
+      # - main
+      - formatting
 env:
   USER: github.actor
 jobs:
@@ -34,3 +34,50 @@ jobs:
           cd $GITHUB_WORKSPACE
           source /opt/ros/${{matrix.distro}}/setup.bash
           colcon test
+
+  test_docker: # On Linux, iterates on all ROS 1 and ROS 2 distributions.
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ros_distribution:
+          - humble
+          - iron
+
+        # Define the Docker image(s) associated with each ROS distribution.
+        # The include syntax allows additional variables to be defined, like
+        # docker_image in this case. See documentation:
+        # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#example-including-configurations-in-a-matrix-build
+        #
+        # Platforms are defined in REP 3 and REP 2000:
+        # https://ros.org/reps/rep-0003.html
+        # https://ros.org/reps/rep-2000.html
+        include:
+          # Humble Hawksbill (May 2022 - May 2027)
+          - docker_image: ubuntu:jammy
+            ros_distribution: humble
+            ros_version: 2
+
+          # Iron Irwini (May 2023 - November 2024)
+          - docker_image: ubuntu:jammy
+            ros_distribution: iron
+            ros_version: 2
+
+          # Rolling Ridley (No End-Of-Life)
+          - docker_image: ubuntu:jammy
+            ros_distribution: rolling
+            ros_version: 2
+
+    container:
+      image: ${{ matrix.docker_image }}
+    steps:
+      - name: setup ROS environment
+        uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: ${{ matrix.ros_distribution }}
+      
+      - name: build and test ROS 2
+        if: ${{ matrix.ros_version == 2 }}
+        uses: ros-tooling/action-ros-ci@v0.2
+        with:
+          package-name: YOUR_PACKAGE_HERE MORE_PACKAGES_HERE
+          target-ros2-distro: ${{ matrix.ros_distribution }}
