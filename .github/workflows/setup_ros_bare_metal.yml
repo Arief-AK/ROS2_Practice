@@ -34,19 +34,27 @@ jobs:
         run: .github/workflows/install_system_dependencies.sh "${{ env.USER }}"
 
       - name: Running install ROS2 script
-        run: .github/workflows/install_ros.sh "${{ matrix.distro }}"
+        env:
+          DISTRO_VALUE: "${{matrix.distro}}"
+        run: .github/workflows/install_ros.sh "${{ env.DISTRO_VALUE }}"
 
       - name: Running install ROS2 extra dependencies script
-        run: .github/workflows/install_package_dependencies.sh "${{ matrix.distro }}"
+        env:
+          DISTRO_VALUE: "${{matrix.distro}}"
+        run: .github/workflows/install_package_dependencies.sh "${{ env.DISTRO_VALUE }}"
 
       - name: Build sources
+        env:
+          DISTRO_VALUE: "${{matrix.distro}}"
         run: |
           cd $GITHUB_WORKSPACE
-          source /opt/ros/${{matrix.distro}}/setup.bash
+          source /opt/ros/${{env.DISTRO_VALUE}}/setup.bash
           colcon build
 
       - name: Test packages
+        env:
+          DISTRO_VALUE: "${{matrix.distro}}"
         run: |
           cd $GITHUB_WORKSPACE
-          source /opt/ros/iron/setup.bash
+          source /opt/ros/${{env.DISTRO_VALUE}}/setup.bash
           colcon test
