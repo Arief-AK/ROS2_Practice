@@ -34,10 +34,10 @@ jobs:
         run: .github/workflows/install_system_dependencies.sh "${{ env.USER }}"
 
       - name: Running install ROS2 script
-        run: .github/workflows/install_ros.sh $DISTRO
+        run: .github/workflows/install_ros.sh "${{matrix.distro}}"
 
       - name: Running install ROS2 extra dependencies script
-        run: .github/workflows/install_package_dependencies.sh $DISTRO
+        run: .github/workflows/install_package_dependencies.sh "${{matrix.distro}}"
 
       - name: Build sources
         run: |
