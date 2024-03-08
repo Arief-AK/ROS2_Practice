@@ -1,6 +1,6 @@
 # Workflow to setup ROS2 and test packages
 
-name: setup_ROS2
+name: setup_ROS2_on_bare_metal
 on:
   push:
     branches:
