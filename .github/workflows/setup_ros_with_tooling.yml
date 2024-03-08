@@ -2,10 +2,9 @@
 
 name: setup_ROS2_with_ros_tooling
 on:
-  push:
+  pull_request:
     branches:
       - main
-      # - formatting
 env:
   USER: github.actor
 jobs:

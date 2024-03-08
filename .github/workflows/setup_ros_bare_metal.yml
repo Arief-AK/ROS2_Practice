@@ -4,11 +4,7 @@ name: setup_ROS2_on_bare_metal
 on:
   push:
     branches:
-      # - main
       - formatting
-  # pull_request:
-  #   branches:
-  #     - main
 env:
   USER: github.actor
 jobs:
@@ -36,7 +32,7 @@ jobs:
       - name: Running install ROS2 script
         run: |
           .github/workflows/install_ros.sh "${{ env.USER }}" "${{matrix.distro}}"
-          source ./opt/ros/${ROS_DISTRO}/setup.bash && ros2 run --help
+          source /opt/ros/${{matrix.distro}}/setup.bash && ros2 run --help
           echo "${{env.USER}} successfully installed ROS2-${{matrix.distro}} in system"
 
       - name: Running install ROS2 extra dependencies script
