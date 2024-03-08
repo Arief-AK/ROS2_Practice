@@ -33,11 +33,15 @@ jobs:
       - name: Running system install dependencies script
         run: .github/workflows/install_system_dependencies.sh "${{ env.USER }}"
 
+      - name: Set Environment Variables
+        run: |
+          export ROS_VERSION=${{ matrix.distro }}
+
       - name: Running install ROS2 script
-        run: .github/workflows/install_ros.sh "${{matrix.distro}}"
+        run: .github/workflows/install_ros.sh
 
       - name: Running install ROS2 extra dependencies script
-        run: .github/workflows/install_package_dependencies.sh "${{matrix.distro}}"
+        run: .github/workflows/install_package_dependencies.sh
 
       - name: Build sources
         run: |
