@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-  #     - formatting
+      - formatting
   # pull_request:
   #   branches:
   #     - main
@@ -49,4 +49,4 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           source /opt/ros/iron/setup.bash
-          colcon test --packages-select ${{ matrix.packages }}
+          colcon test
