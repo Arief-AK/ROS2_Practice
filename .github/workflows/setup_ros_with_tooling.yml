@@ -41,7 +41,7 @@ jobs:
         ros_distribution:
           - iron
         include:
-          - docker_image: ubuntu-jammy
+          - docker_image: ubuntu:jammy
             ros_distribution: iron
             ros_version: 2
     
