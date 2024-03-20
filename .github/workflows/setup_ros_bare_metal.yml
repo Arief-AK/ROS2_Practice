@@ -1,14 +1,10 @@
 # Workflow to setup ROS2 and test packages
 
-name: setup_ROS2
+name: setup_ROS2_on_bare_metal
 on:
   push:
     branches:
-      - main
       - formatting
-  pull_request:
-    branches:
-      - main
 env:
   USER: github.actor
 jobs:
@@ -16,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        packages: [cpp_arief_pubsub, cpp_service_cli]
+        distro: [iron]
     steps:
       - name: Check out the current repository to the runner
         uses: actions/checkout@v4
@@ -34,19 +30,22 @@ jobs:
         run: .github/workflows/install_system_dependencies.sh "${{ env.USER }}"
 
       - name: Running install ROS2 script
-        run: .github/workflows/install_ros.sh "${{ env.USER }}"
+        run: |
+          .github/workflows/install_ros.sh "${{ env.USER }}" "${{matrix.distro}}"
+          source /opt/ros/${{matrix.distro}}/setup.bash && ros2 run --help
+          echo "${{github.actor}} successfully installed ROS2-${{matrix.distro}} in system"
 
       - name: Running install ROS2 extra dependencies script
-        run: .github/workflows/install_package_dependencies.sh "${{ env.USER }}"
-      
+        run: .github/workflows/install_package_dependencies.sh "${{ env.USER }}" "${{matrix.distro}}"
+
       - name: Build sources
         run: |
           cd $GITHUB_WORKSPACE
-          source /opt/ros/iron/setup.bash
+          source /opt/ros/"${{matrix.distro}}"/setup.bash
           colcon build
 
       - name: Test packages
         run: |
           cd $GITHUB_WORKSPACE
-          source /opt/ros/iron/setup.bash
-          colcon test --packages-select ${{ matrix.packages }}
+          source /opt/ros/"${{matrix.distro}}"/setup.bash
+          colcon test --event-handler=console_direct+
