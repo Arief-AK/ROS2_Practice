@@ -48,4 +48,4 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           source /opt/ros/"${{matrix.distro}}"/setup.bash
-          colcon test
+          colcon test --event-handler=console_direct+
