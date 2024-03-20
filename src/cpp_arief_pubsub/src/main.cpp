@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "include/cpp_arief_pubsub/Publisher.hpp"
-#include "include/cpp_arief_pubsub/Subscriber.hpp"
+#include "../include/cpp_arief_pubsub/Publisher.hpp"
+#include "../include/cpp_arief_pubsub/Subscriber.hpp"
 
 int main(int argc, char ** argv)
 {
