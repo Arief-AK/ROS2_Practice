@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cpp_arief_pubsub)
+project(cpp_pubsub)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,7 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-# include the directories for the headers
+# Include the directories for the headers
 include_directories(include/${PROJECT_NAME})
 
 # Add library
@@ -23,13 +23,13 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
 
   # Set the test files
-  set(TESTFILES
+  set(TEST_FILES
     test/main.cpp
     test/pub_test.cpp
   )
 
   # Add GTest executable
-  ament_add_gtest(${PROJECT_NAME}_test ${TESTFILES})
+  ament_add_gtest(${PROJECT_NAME}_test ${TEST_FILES})
   target_include_directories(${PROJECT_NAME}_test PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>

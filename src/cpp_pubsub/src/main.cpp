@@ -1,6 +1,6 @@
 #include <cstring>
-#include "../include/cpp_arief_pubsub/Publisher.hpp"
-#include "../include/cpp_arief_pubsub/Subscriber.hpp"
+#include "../include/cpp_pubsub/Publisher.hpp"
+#include "../include/cpp_pubsub/Subscriber.hpp"
 
 int main(int argc, char ** argv)
 {

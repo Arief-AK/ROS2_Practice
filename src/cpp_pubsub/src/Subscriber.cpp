@@ -1,4 +1,4 @@
-#include "../include/cpp_arief_pubsub/Subscriber.hpp"
+#include "../include/cpp_pubsub/Subscriber.hpp"
 
 using std::placeholders::_1;
 

@@ -1,4 +1,4 @@
-#include "../include/cpp_arief_pubsub/Publisher.hpp"
+#include "../include/cpp_pubsub/Publisher.hpp"
 
 MinimalPublisher::MinimalPublisher() : Node("minimal_publisher"), count_(0)
 {
