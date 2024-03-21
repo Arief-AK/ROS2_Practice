@@ -2,6 +2,9 @@
 
 name: setup_ROS2_with_ros_tooling
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
