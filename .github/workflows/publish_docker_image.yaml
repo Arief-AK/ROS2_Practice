@@ -12,6 +12,10 @@ jobs:
             - name: Build Docker Image
               run: |
                 docker build -t ariefak/simple-ros-packages:latest
+
+            - name: Login to Docker Hub
+              run: |
+                docker login -u ariefak -p ${{secrets.DOCKER_HUB_TOKEN}}
             
             - name: Publish Image
               run: |
