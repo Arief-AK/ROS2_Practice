@@ -1,0 +1,25 @@
+# Workflow to publish a package on GitHub
+
+name: Publish Docker image as package
+on:
+    push:
+      branches:
+        - main  
+jobs:
+    publish_package:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Login to GitHub container repository
+              run: |
+                docker login --username arief-ak --password ${{secrets.GH_PAT}} ghcr.io
+
+            - name: Build Docker Image
+              run: |
+                docker build . -t ghcr.io/arief-ak/simple-ros-packages:latest
+            
+            - name: Publish Image
+              run: |
+                docker push ghcr.io/arief-ak/simple-ros-packages:latest
