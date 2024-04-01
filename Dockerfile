@@ -16,12 +16,10 @@ WORKDIR /home/user/ros2_ws
 # Copy source contents of this project to src directory
 ADD src /home/user/ros2_ws/src
 
-	
+# Source ROS2 and build packages	
 RUN . /opt/ros/$ROS_DISTRO/setup.sh \
     && colcon build
 
-# Source the ROS2
-RUN . /home/user/ros2_ws/install/setup.sh
-
-# Test packages
-RUN colcon test --event-handler=console_direct+
+# Source ROS2 and test packages
+RUN . /opt/ros/$ROS_DISTRO/setup.sh \
+    && colcon test --event-handler=console_direct+
