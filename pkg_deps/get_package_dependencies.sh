@@ -30,9 +30,7 @@ for file in "$directory"/*; do
 done
 
 # Run the python script for formatting the text file
-python3 parse_dependencies.py --format
-
-# Using the packages, run colcon info
+python3 dependencies_formatter.py
 
 # Check if the file exists
 if [ -f "$output_file" ]; then
