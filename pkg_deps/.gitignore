@@ -1,2 +1,5 @@
 # Ignore the exported package dependencies
 *.txt
+
+# Consider the pip requirements
+!pip_requirements.txt

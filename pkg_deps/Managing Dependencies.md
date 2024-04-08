@@ -2,7 +2,27 @@
 To provide better transparency with package dependencies, the `get_package_dependencies.sh` and `dependencies_formatter.py` scripts are created to showcase all dependencies used within each package in the repository.
 
 ## Quickstart
-We are going to run the script, but before that, make sure that we give the executable permission to the file.
+We are going to run the script, but before that, make sure that we have everything we need to run it.
+
+First, make sure that virtualenv is installed.
+```shell
+pip install virtualenv
+```
+
+Create an environment, and activate it (make sure we are at root directory)
+```shell
+cd ..
+virtualenv .venv
+source .venv/bin/activate
+```
+
+Let us now ensure that the python is equipped with the right libraries
+```shell
+cd pkg_deps
+pip install -r pip_requirements.txt
+```
+
+Now, we are all set. Let us give the executable permission to the file.
 ```shell
 sudo chmod +x get_package_dependencies.sh
 ```
