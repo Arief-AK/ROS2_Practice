@@ -1,4 +1,4 @@
-![ROS2 setup with tooling](https://github.com/Arief-AK/ROS2_Practice/actions/workflows/setup_ros_with_tooling.yml/badge.svg) ![ROS2 setup with custom scripts](https://github.com/Arief-AK/ROS2_Practice/actions/workflows/setup_ros_bare_metal.yml/badge.svg)
+![ROS2 setup with tooling](https://github.com/Arief-AK/ROS2_Practice/actions/workflows/setup_ros_with_tooling.yml/badge.svg) ![ROS2 setup with custom scripts](https://github.com/Arief-AK/ROS2_Practice/actions/workflows/setup_ros_bare_metal.yml/badge.svg) ![Publish container to GHCR](https://github.com/Arief-AK/ROS2_Practice/actions/workflows/publish_docker_package.yml/badge.svg)
 
 # ROS2 Practice
 The purpose of this repository is to familiarise and document the practice of using ROS2. This repository follows the [ROS2 Iron Tutorials](https://docs.ros.org/en/iron/Tutorials.html).
