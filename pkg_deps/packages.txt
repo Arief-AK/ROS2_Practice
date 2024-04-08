@@ -1,4 +1,0 @@
-cpp_pubsub
-cpp_service_cli
-simple_package
-tutorial_interfaces

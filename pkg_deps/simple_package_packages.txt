@@ -1,9 +1,0 @@
-path: src/simple_package
-  type: ros.ament_cmake
-  name: simple_package
-  dependencies:
-    build: ament_cmake
-    test: ament_lint_auto ament_lint_common
-  metadata:
-    maintainers: ['arief <mariefak22@gmail.com>']
-    version: 0.0.0
