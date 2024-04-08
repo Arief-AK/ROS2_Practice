@@ -1,0 +1,10 @@
+path: src/tutorial_interfaces
+  type: ros.ament_cmake
+  name: tutorial_interfaces
+  dependencies:
+    build: ament_cmake geometry_msgs rosidl_default_generators
+    run: geometry_msgs rosidl_default_runtime
+    test: ament_lint_auto ament_lint_common
+  metadata:
+    maintainers: ['arief <mariefak22@gmail.com>']
+    version: 0.0.0
