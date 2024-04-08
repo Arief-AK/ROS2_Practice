@@ -3,7 +3,7 @@
 # ROS2 Practice
 The purpose of this repository is to familiarise and document the practice of using ROS2. This repository follows the [ROS2 Iron Tutorials](https://docs.ros.org/en/iron/Tutorials.html).
 
-## The Quickstart
+## Quickstart
 Clone the git repository into a new workspace by using `git clone` and build the packages with the following command.
 ```bash
 colcon build
