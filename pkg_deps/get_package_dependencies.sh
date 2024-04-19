@@ -30,7 +30,7 @@ for file in "$directory"/*; do
 done
 
 # Run the python script for formatting the text file
-python3 dependencies_formatter.py
+python3 dependencies_formatter.py -c packages.txt
 
 # Check if the file exists
 if [ -f "$output_file" ]; then
@@ -43,3 +43,6 @@ if [ -f "$output_file" ]; then
 else
     echo "File $output_file does not exist."
 fi
+
+# Run the python script for formatting the text file
+python3 dependencies_formatter.py -a packages.txt
