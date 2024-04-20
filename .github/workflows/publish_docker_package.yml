@@ -18,7 +18,7 @@ jobs:
 
             - name: Cleanup system
               run: |
-                docker image prune -y
+                docker image prune
 
             - name: Build Docker Image
               run: |
