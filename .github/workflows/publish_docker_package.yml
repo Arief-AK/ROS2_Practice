@@ -16,6 +16,10 @@ jobs:
               run: |
                 docker login --username arief-ak --password ${{secrets.GH_PAT}} ghcr.io
 
+            - name: Cleanup system
+              run: |
+                docker image prune -y
+
             - name: Build Docker Image
               run: |
                 docker build --no-cache . -t ghcr.io/arief-ak/simple-ros-packages:latest
