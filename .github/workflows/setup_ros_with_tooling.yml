@@ -1,6 +1,6 @@
 # Workflow to test using open-source ros-tooling
 
-name: setup_ROS2_with_ros_tooling
+name: Setup ROS2 from actions
 on:
   push:
     branches:
