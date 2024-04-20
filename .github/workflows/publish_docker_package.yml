@@ -2,28 +2,28 @@
 
 name: Publish Docker image as package
 on:
-    push:
-      branches:
-        - main  
+  push:
+    branches:
+      - main
 jobs:
-    publish_package:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+  publish_package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Login to GitHub container repository
-              run: |
-                docker login --username arief-ak --password ${{secrets.GH_PAT}} ghcr.io
+      - name: Login to GitHub container repository
+        run: |
+          docker login --username arief-ak --password ${{secrets.GH_PAT}} ghcr.io
 
-            - name: Cleanup system
-              run: |
-                docker image prune
+      - name: Cleanup system
+        run: |
+          docker image prune
 
-            - name: Build Docker Image
-              run: |
-                docker build --no-cache . -t ghcr.io/arief-ak/simple-ros-packages:latest
-            
-            - name: Publish Image
-              run: |
-                docker push ghcr.io/arief-ak/simple-ros-packages:latest
+      - name: Build Docker Image
+        run: |
+          docker build --no-cache . -t ghcr.io/arief-ak/simple-ros-packages:latest
+
+      - name: Publish Image
+        run: |
+          docker push ghcr.io/arief-ak/simple-ros-packages:latest
