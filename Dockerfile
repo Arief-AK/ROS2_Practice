@@ -14,7 +14,7 @@ RUN cd home \
 WORKDIR /home/user/ros2_ws
 
 # Copy source contents of this project to src directory
-ADD src /home/user/ros2_ws/src
+COPY . /home/user/ros2_ws
 
 # Source ROS2 and build packages	
 RUN . /opt/ros/$ROS_DISTRO/setup.sh \
