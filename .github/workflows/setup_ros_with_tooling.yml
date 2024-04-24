@@ -36,9 +36,3 @@ jobs:
           cd $GITHUB_WORKSPACE
           source /opt/ros/${{matrix.distro}}/setup.bash
           colcon test --event-handler=console_direct+
-
-      - name: Get the dependencies of packages
-        run: |
-          cd $GITHUB_WORKSPACE
-          pkg_deps/get_package_dependencies.sh
-          echo "Sucessfully retrieved dependencies of packages"
