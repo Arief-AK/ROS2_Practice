@@ -1,4 +1,4 @@
-# Workflow to setup ROS2 and test packages
+# Workflow to setup ROS2 and test packages and its dependencies
 
 name: Setup ROS2 with custom scripts
 on:
