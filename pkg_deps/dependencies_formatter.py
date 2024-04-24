@@ -41,8 +41,6 @@ def clean_file(file:str) -> None:
             line = line.replace("../src/","")
             modified_lines.append(line)
 
-    print(f"Succesfully removed leading path")
-
     # Write the modified lines back to the same file
     with open(input_file, 'w') as file:
         file.writelines(modified_lines)
@@ -58,8 +56,7 @@ def append_file(file:str):
 
     for package in packages:
         package = package.rstrip("\n")
-        input_file = f"{os.getcwd()}/{package}_packages.txt"
-        print(f"Opening the {package}_packages.txt file")
+        input_file = f"{os.getcwd()}/{package}_packages.txt"        
         
         with open(input_file, 'r') as package_file:
             package_file_lines = package_file.readlines()
