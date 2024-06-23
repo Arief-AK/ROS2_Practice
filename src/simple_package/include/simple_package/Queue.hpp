@@ -24,6 +24,7 @@ namespace CustomDataTypes
         void push_back(int value);
         void push_front(int value);
         void clear();
+        void print();
         
         int pop_back();
         int pop_front();

@@ -75,6 +75,25 @@ void CustomDataTypes::Queue::clear()
     }
 }
 
+void CustomDataTypes::Queue::print()
+{
+    if(head != nullptr){
+        auto current_node = head;
+
+        std::cout << "| ";
+
+        while (current_node->next != nullptr)
+        {
+            std::cout << current_node->value << " -> ";
+            current_node = current_node->next;
+        }
+        std::cout << current_node->value << " |" << std::endl;
+    }
+    else{
+        std::cout << "Queue is empty!";
+    }
+}
+
 int CustomDataTypes::Queue::pop_back()
 {
     // Get the tail
